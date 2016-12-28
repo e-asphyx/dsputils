@@ -27,7 +27,14 @@ func (p PoleZero) FreqZ(points int) [][2]float64 {
 			zProd *= cmplx.Abs(dst - v)
 		}
 
-		data[i] = [2]float64{relPos * 0.5, zProd / pProd}
+		var mag float64
+		if pProd != 0 {
+			mag = zProd / pProd
+		} else {
+			mag = math.MaxFloat64
+		}
+
+		data[i] = [2]float64{relPos * 0.5, mag}
 	}
 
 	return data
