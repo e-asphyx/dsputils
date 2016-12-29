@@ -10,11 +10,6 @@ type PoleZero struct {
 	Z []complex128
 }
 
-type FilterCoef struct {
-	A []float64
-	B []float64
-}
-
 func (p PoleZero) FreqZ(points int, fs ...int) [][2]float64 {
 	var fFs float64 = 1
 	if len(fs) != 0 {
@@ -78,7 +73,7 @@ func rootsToCoefficients(roots []complex128) []float64 {
 
 	result := make([]float64, len(p))
 	for i, c := range p {
-		result[i] = real(c)
+		result[len(p)-1-i] = real(c)
 	}
 	return result
 }
