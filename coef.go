@@ -27,11 +27,7 @@ func (f FilterCoef) Norm() FilterCoef {
 }
 
 func round(x float64) float64 {
-	if x >= 0 {
-		return math.Trunc(x + 0.5)
-	} else {
-		return math.Trunc(x - 0.5)
-	}
+	return math.Floor(x + 0.5)
 }
 
 func quantize(val float64, bits uint) int64 {
